@@ -1,0 +1,23 @@
+_format_version: "3.0"
+_transform: true
+
+services:
+  - name: api-a-service
+    url: http://api-a:3000/api/getEspecificData
+    routes:
+      - name: get-data-route
+        paths:
+          - /getData
+        strip_path: true
+
+plugins:
+  - name: oidc
+    route: get-data-route
+    config:
+      introspection_endpoint: http://keycloak:8080/realms/poc-realm/protocol/openid-connect/token/introspect
+      discovery: http://keycloak:8080/realms/poc-realm/.well-known/openid-configuration
+      client_id: api-a
+      client_secret: api-a-secret
+      bearer_only: "yes"
+      realm: poc-realm
+      introspection_endpoint_auth_method: client_secret_post

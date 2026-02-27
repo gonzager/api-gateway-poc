@@ -1,0 +1,9 @@
+{
+    "name": "api-a",
+    "version": "1.0.0",
+    "dependencies": {
+        "express": "^4.18.2",
+        "jsonwebtoken": "^9.0.2",
+        "jwks-rsa": "^3.0.1"
+    }
+}

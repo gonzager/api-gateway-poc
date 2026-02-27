@@ -1,0 +1,30 @@
+{
+    "realm": "poc-realm",
+    "enabled": true,
+    "clients": [
+        {
+            "clientId": "api-a",
+            "enabled": true,
+            "serviceAccountsEnabled": true,
+            "clientAuthenticatorType": "client-secret",
+            "secret": "api-a-secret",
+            "protocol": "openid-connect",
+            "publicClient": false,
+            "standardFlowEnabled": false,
+            "directAccessGrantsEnabled": false,
+            "authorizationServicesEnabled": false
+        },
+        {
+            "clientId": "api-b",
+            "enabled": true,
+            "serviceAccountsEnabled": true,
+            "clientAuthenticatorType": "client-secret",
+            "secret": "api-b-secret",
+            "protocol": "openid-connect",
+            "publicClient": false,
+            "standardFlowEnabled": false,
+            "directAccessGrantsEnabled": false,
+            "authorizationServicesEnabled": false
+        }
+    ]
+}
