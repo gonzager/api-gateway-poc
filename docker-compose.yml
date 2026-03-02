@@ -55,7 +55,7 @@ services:
       KONG_PG_USER: keycloak
       KONG_PG_PASSWORD: keycloak
       KONG_PG_DATABASE: kong
-      KONG_PLUGINS: oidc
+      KONG_PLUGINS: "request-transformer,oidc"
       KONG_LOG_LEVEL: debug
     networks:
       - poc-net
@@ -74,7 +74,7 @@ services:
       KONG_PG_USER: keycloak
       KONG_PG_PASSWORD: keycloak
       KONG_PG_DATABASE: kong
-      KONG_PLUGINS: oidc
+      KONG_PLUGINS: "request-transformer,oidc"
       KONG_LOG_LEVEL: debug
     networks:
       - poc-net
@@ -89,7 +89,7 @@ services:
       KONG_PG_DATABASE: kong
       KONG_PROXY_ACCESS_LOG: /dev/stdout
       KONG_PROXY_ERROR_LOG: /dev/stderr
-      KONG_PLUGINS: oidc
+      KONG_PLUGINS: "request-transformer,oidc"
       KONG_LOG_LEVEL: debug
       KONG_ADMIN_LISTEN: 0.0.0.0:8001
       KONG_ADMIN_GUI_LISTEN: 0.0.0.0:8002

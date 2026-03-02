@@ -45,6 +45,16 @@ function validateToken(req, res, next) {
     });
 }
 
+const validateAudience = (req, res, next) => {
+  console.log(req.headers);
+  const audience = req.get("X-Audience");
+  const allowedClient = process.env.ALLOWED_CLIENT || "api-a";
+  if (audience !== allowedClient) {
+    return res.status(403).send(`Forbidden: Token issued for ${audience}, but this API only accepts ${allowedClient}`);
+  }
+  next();
+}
+
 app.get("/", (req, res) => res.send("API A is running"));
 
 app.get("/api/getEspecificData", validateToken, (req, res) => {
@@ -52,6 +62,14 @@ app.get("/api/getEspecificData", validateToken, (req, res) => {
     message: "Secure data",
     client: req.user.clientId || req.user.azp,
     subject: req.user.sub
+  });
+});
+
+app.get("/api/getEspecificDataHeader", validateAudience, (req, res) => {
+  res.json({
+    message: "Secure data",
+    subject: req.get("X-User-Info"),
+    aud: req.get("X-Audience")
   });
 });
 
